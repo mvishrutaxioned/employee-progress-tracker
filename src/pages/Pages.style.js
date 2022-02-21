@@ -4,7 +4,6 @@ export const FormSectionStyle = styled.section`
     .wrapper {
         width: 100%;
         padding: 1px;
-        margin-top: 40px;
         box-sizing: border-box;
         background-color: #f3f3fe;
     }
@@ -144,23 +143,50 @@ export const SelectStyle = styled.div`
 `;
 
 export const TableListStyle = styled.section`
-    margin-top: 120px;
+    .wrapper { width: 100%; }
+    margin-top: 80px;
+
+    @media only screen and (max-width: 540px) {
+        margin-top: 120px;
+    }
 `;
 
 export const TableStyle = styled.table`
     width: ${({width}) => width};
-    margin: 20px 0;
+    margin: 20px 6px;
+    border-collapse: collapse;
     overflow-x: scroll;
+
+    th, td { border: 1px solid #c0c0c0; }
 `;
 
-export const TableHeadStyle = styled.tr`
+export const TableHeadStyle = styled.thead`
     th {
-        padding: 5px 10px;
+        padding: 5px;
+        margin: 0;
         background: #dcdcdc;
-        font-weight: 600;
+        font-weight: 500;
         font-family: 'Open Sans', sans-serif;
-        font-size: 12px;
+        font-size: 11px;
         text-align: left;
         letter-spacing: .5px;
     }
+
+    th span::after {
+        margin-right: 4px;
+        font-size: 12px;
+        color: #000;
+        text-indent: 0;
+    }
+
+    th:nth-child(2) span::after { 
+        content: '\\f7d7';
+    }
+
+    th:nth-child(3) span::after,
+    th:nth-child(4) span::after,
+    th:nth-child(5) span::after { content: "\\f02b"; }
+
+    th:nth-child(6) span::after { content: "\\f073"; }
+    th:nth-child(7) span::after { content: "\\f249"; }
 `;
