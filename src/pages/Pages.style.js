@@ -4,6 +4,7 @@ export const FormSectionStyle = styled.section`
     .wrapper {
         width: 100%;
         padding: 1px;
+        margin-top: 40px;
         box-sizing: border-box;
         background-color: #f3f3fe;
     }
