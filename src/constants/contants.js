@@ -1,0 +1,4 @@
+export const ActionTypes = {
+    ADD_SCHEDULE_REPORT: "ADD_SCHEDULE_REPORT",
+    ADD_TASK_ASSIGNED: "ADD_TASK_ASSIGNED"
+}
