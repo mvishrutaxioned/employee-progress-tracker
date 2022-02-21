@@ -80,7 +80,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -88,7 +88,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -96,7 +96,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -104,7 +104,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -112,7 +112,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -120,7 +120,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdf"
     },
     {
         task: "sdfsdfsd sdfsdf sd sdf sdf",
@@ -128,7 +128,7 @@ export const taskInfo = [
         phase: "Phase 1",
         status: "In Progress",
         date: "03/12/2020",
-        notes: "sdfsdf ffg dfgdf df gdfgdf df gdfg"
+        notes: "sdfsdf ffg dfgdf df gdfgdf"
     },
 ];
 

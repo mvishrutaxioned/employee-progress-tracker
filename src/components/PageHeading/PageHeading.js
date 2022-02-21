@@ -11,4 +11,4 @@ const PageHeading = ({text}) => {
   )
 }
 
-export default PageHeading;
+export default PageHeading
