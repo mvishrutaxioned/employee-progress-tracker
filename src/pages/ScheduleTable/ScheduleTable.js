@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import SingleSchedule from '../../components/SingleSchedule/SingleSchedule';
 import TablePageHeading from '../../components/TablePageHeading/TablePageHeading';
 import { TableListStyle, TableStyle, TableHeadStyle2 } from '../Pages.style';
-import { scheduleInfo } from '../../utils/formData';
+import { useSelector } from 'react-redux';
 
 const ScheduleTable = () => {
+  const reports = useSelector(state => state.reports);
+  const [showDel, setShowDel] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [deleteIds, setDeleteIds] = useState([]);
+
+  const handleChange = (position, myId) => {
+    let present = 0;
+    let currentId = deleteIds.filter((item, index) => {
+     if(item === myId) present = 1;
+     else return item;
+    })
+
+    if(present === 0) {
+      setDeleteIds([...currentId,myId]);
+      currentId = [...currentId,myId];
+    } else {
+      setDeleteIds([...currentId]);
+      currentId = [...currentId];
+    }
+
+    if(currentId.length === 0) setShowDel(false);
+    else setShowDel(true)
+  }
+
   return (
         <TableListStyle>
           <div className="wrapper">
             <PageHeading text="Log Weekly Shift" />
-            <TablePageHeading />
+            <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds}} elem={{showDel, showEdit, deleteIds}} />
             <TableStyle width="1100px">
               <TableHeadStyle2>
                 <tr>
@@ -28,9 +52,7 @@ const ScheduleTable = () => {
                 </tr>
               </TableHeadStyle2>
               <tbody>
-                {
-                  scheduleInfo.map((schedule, i) => <SingleSchedule key={i} schedule={schedule} />)
-                }
+                {reports.map((report, i) => <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />)}
               </tbody>
             </TableStyle>
           </div>

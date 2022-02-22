@@ -12,6 +12,7 @@ const PageHeadStyle = styled.div`
     top: 0;
     background: #fff;
     font-size: 12px;
+    z-index: 20;
 
     p { margin: 0; }
 
@@ -26,13 +27,15 @@ const PageHeadStyle = styled.div`
         transition: .5s ease;
 
         span::after {
-            content: '\f104';
+            content: '\\f104';
             margin-right: 5px;
             font-size: 10px;
             color: #000;
+            transition: .5s ease;
         }
 
-        &:hover { left: 5px;}
+        &:hover,
+        &:hover span::after { color: #c0c0c0; }
     }
 `;
 

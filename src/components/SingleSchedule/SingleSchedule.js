@@ -1,20 +1,20 @@
 import React from 'react';
 import { SingleScheduleStyle } from './SingleSchedule.style'
 
-const SingleSchedule = ({ schedule }) => {
+const SingleSchedule = ({ report, name, change, index }) => {
   return (
     <SingleScheduleStyle>
-        <td><span>1</span> <input type="checkbox" /></td>
-        <td><span>{schedule.name}</span></td>
-        <td><span>{schedule.week}</span></td>
-        <td><span>{schedule.mon}</span></td>
-        <td><span>{schedule.tues}</span></td>
-        <td><span>{schedule.wed}</span></td>
-        <td><span>{schedule.thur}</span></td>
-        <td><span>{schedule.fri}</span></td>
-        <td><span>{schedule.sat}</span></td>
-        <td><span>{schedule.sun}</span></td>
-        <td><span>{schedule.hours}</span></td>
+        <td><input type="checkbox" name={name} onChange={() => change(index, report.id)} /></td>
+        <td><span>{report.name}</span></td>
+        <td><span>{report.weekDate}</span></td>
+        <td><span>{report.monday}</span></td>
+        <td><span>{report.tuesday}</span></td>
+        <td><span>{report.wednesday}</span></td>
+        <td><span>{report.thursday}</span></td>
+        <td><span>{report.friday}</span></td>
+        <td><span>{report.saturday}</span></td>
+        <td><span>{report.sunday}</span></td>
+        <td><span>{report.hours}</span></td>
     </SingleScheduleStyle>
   )
 }
