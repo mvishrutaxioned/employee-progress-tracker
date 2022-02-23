@@ -73,62 +73,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ```
 └── src
     ├── actions
-    │   └── actions.js
     ├── assets
-    │   └── css
-    │     └── style.js
-    |   └── images
-    |
     ├── components
-    │   └── DayRadioBtn
-    |         └── DayRadioBtn.js
-    |           └── DayRadioBtn.style.js
-    |   └── HomeButton
-    |     └── HomeButton.js
-    |     └── HomeButton.style.js
-    |   └── PageHeading
-    |     └── PageHeading.js
-    |     └── PageHeading.style.js
-    |   └── Radios
-    |     └── Radios.js
-    |     └── Radios.style.js
-    |   └── SingleSchedule
-    |     └── SingleSchedule.js
-    |     └── SingleSchedule.style.js
-    |   └── SingleTask
-    |     └── SingleTask.js
-    |     └── SingleTask.style.js
-    |   └── TablePageHeading
-    |     └── TablePageHeading.js
-    |     └── TablePageHeading.style.js
-    |
     |── constants
-    |       └── contants.js
-    |
     |── contexts
-    |       └── Context.js
-    |
     ├── pages
-    │   └── InitialPage
-    │       └── InitialPage.js
-    │       └── InitialPage.style.js
-    │   └── AssignTask
-    │       └── AssignTask.js
-    │   └── LogShift
-    │       └── LogShift.js
-    │   └── ScheduleTable
-    │       └── ScheduleTable.js
-    │   └── TaskList
-    │       └── TaskList.js
-    │   └── Pages.style.js
-    │
     ├── reducers
-    │   └── allReducers.js
-    │   └── reportReducer.js
-    │   └── taskReducer.js
-    |
     |── utils
-    |   └── formData.js
     |
     ├── App.js
     ├── App.test.js
