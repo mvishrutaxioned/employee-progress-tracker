@@ -96,26 +96,22 @@ const AssignTask = () => {
             <span className="error taskErr">{formErrors.task}</span>
             <p>Phase</p>
             <RadioStyle>
-              {
-                phaseInfo.map((phase, i) => {
+              {phaseInfo.map((phase, i) => {
                   return <Radios key={i} name="phase" value={formValues.phase} change={handleChange} title={phase.title} id={phase.id} />
-                })
-              }
+                })}
             </RadioStyle>
             <span className="error phaseErr">{formErrors.phase}</span>
             <p>Status</p>
             <RadioStyle>
-              {
-                statusInfo.map((status, i) => {
+              {statusInfo.map((status, i) => {
                   return <Radios key={i} name="status" value={formValues.status} change={handleChange} title={status.title} id={status.id} />
-                })
-              }
+                })}
             </RadioStyle>
             <span className="error statusErr">{formErrors.status}</span>
             <SelectStyle>
               <label htmlFor="assignTo">Assigned To</label>
               <select id="assignTo" name="assignTo" value={formValues.assignTo} onChange={handleChange}>
-                { employeeNames.map((emp, i) => <option key={i} value={emp}>{emp}</option>) }
+                {employeeNames.map((emp, i) => <option key={i} value={emp}>{emp}</option>)}
               </select>
             </SelectStyle>
               <span className="error assignErr">{formErrors.assignTo}</span>
@@ -126,7 +122,7 @@ const AssignTask = () => {
               <span className="error dateErr">{formErrors.dueDate}</span>
             <SelectStyle>
               <label htmlFor="notes">Notes</label>
-              <textarea id="notes" name="notes" value={formValues.notes} onChange={handleChange}></textarea>
+              <textarea id="notes" name="notes" value={formValues.notes} onChange={handleChange} placeholder="Optional"></textarea>
             </SelectStyle>
             <button type="submit">Submit</button>
           </FormStyle>

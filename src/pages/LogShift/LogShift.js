@@ -111,7 +111,6 @@ const LogShift = () => {
               <input type="date" name="weekDate" id="weekDate" value={formValues.weekDate} onChange={handleChange} />
             </SelectStyle>
             <span className="error">{formErrors.weekDate}</span>
-            <DayRadioBtnStyle>
               <p>Monday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -119,9 +118,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="monday" value={formValues.monday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.monday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Monday}</span>
               <p>Tuesday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -129,9 +126,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="tuesday" value={formValues.tuesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.tuesday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Tuesday}</span>
               <p>Wednesday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -139,9 +134,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="wednesday" value={formValues.wednesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.wednesday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Wednesday}</span>
               <p>Thursday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -149,9 +142,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="thursday" value={formValues.thursday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.thursday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Thursday}</span>
               <p>Friday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -159,9 +150,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="friday" value={formValues.friday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.friday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Friday}</span>
               <p>Saturday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -169,9 +158,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="saturday" value={formValues.saturday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.saturday}</span>
-            </DayRadioBtnStyle>
-            <DayRadioBtnStyle>
+              <span className="error">{formErrors.Saturday}</span>
               <p>Sunday</p>
               <RadioStyle>
                 {dayInfo.map((day, i) => 
@@ -179,8 +166,7 @@ const LogShift = () => {
                 key={Math.round(Math.random()*10000000)} 
                 name="sunday" value={formValues.sunday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
               </RadioStyle>
-              <span className="error">{formErrors.sunday}</span>
-            </DayRadioBtnStyle>
+              <span className="error">{formErrors.Sunday}</span>
             <SelectStyle>
               <label htmlFor="hours">What is your weekly work hours ?</label>
               <input type="text" name="hours" id="hours" value={formValues.hours} onChange={handleChange} />
