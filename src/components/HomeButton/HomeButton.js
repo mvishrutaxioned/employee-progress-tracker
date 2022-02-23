@@ -5,10 +5,16 @@ import { MyContext } from '../../contexts/Context';
 
 const HomeButton = ({ link, color, icon, text, content }) => {
   const value = useContext(MyContext);
+
+  const removeData = () => {
+    value.setEditInfo([])
+    value.setSearchTasks([])
+    value.setSearchReports([])
+  }
   
   return (
     <HomeButtonStyle color={color} content={content}>
-        <Link to={link} onClick={() => value.setEditInfo([])} title={text}>
+        <Link to={link} onClick={removeData} title={text}>
             <span className={icon}>icon</span>
             {text}
         </Link>
