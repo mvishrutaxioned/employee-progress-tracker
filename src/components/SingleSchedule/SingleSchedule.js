@@ -4,7 +4,7 @@ import { SingleScheduleStyle } from './SingleSchedule.style'
 const SingleSchedule = ({ report, name, change, index }) => {
   return (
     <SingleScheduleStyle>
-        <td><input type="checkbox" name={name} onChange={() => change(index, report.id)} /></td>
+        <td>{index+1}<input type="checkbox" name={name} onChange={() => change(index, report.id)} /></td>
         <td><span>{report.name}</span></td>
         <td><span>{report.weekDate}</span></td>
         <td><span>{report.monday}</span></td>

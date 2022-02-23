@@ -39,7 +39,10 @@ const delTask = (payload, state) => {
 const searchTask = (payload, state) => {
     const { value, setSearchTasks } = payload;
     let tasks = [];
-    state.map(obj => (obj.task.toLowerCase().search(value.toLowerCase()) !== -1 ? tasks.push(obj) : null))
+
+    if(!isNaN(value)) state.map(obj => (obj.phase.search(value) !== -1 ? tasks.push(obj) : null))
+    else state.map(obj => (obj.task.toLowerCase().search(value.toLowerCase()) !== -1 ? tasks.push(obj) : null))
+    
     setSearchTasks(tasks);
     return state;
 }

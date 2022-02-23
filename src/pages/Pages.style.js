@@ -221,6 +221,7 @@ export const TableHeadStyle2 = styled.thead`
     th {
         padding: 5px;
         margin: 0;
+        border-bottom: 2px solid #c0c0c0;
         background: #dcdcdc;
         font-weight: 500;
         font-family: 'Open Sans', sans-serif;

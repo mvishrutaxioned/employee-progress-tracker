@@ -29,23 +29,28 @@ export const TablePageStyle = styled.div`
     }
 
     a {
-        padding: 5px 10px;
+        padding: 6px 10px;
         margin: 0 5px;
-        border-radius: 4px;
+        border-radius: 2px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        background: #2b60de;
+        background: #098232;
         color: #fff;
+        font-family: 'Open Sans', sans-serif;
         font-size: 12px;
         -webkit-transition: .5s ease;
         -o-transition: .5s ease;
         transition: .5s ease;
 
-        &:hover { -webkit-filter: brightness(80%); filter: brightness(80%); }
+        &:hover {
+            -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+        }
+
         span::after {
             margin-right: 5px;
             color: #fff;
@@ -70,19 +75,21 @@ export const TablePageStyle = styled.div`
 export const TablePageFormStyle = styled.div`
     width: 30%;
     border: 1px solid #c0c0c0;
-    border-radius: 4px;
+    border-radius: 3px;
     display: flex;
     align-items: center;
+    font-family: 'Open Sans', sans-serif;
 
     form {
         width: 100%;
+        padding: 5px 0;
         display: flex;
         border-right: 1px solid #c0c0c0;
 
         input {
             width: 100%;
             border: none;
-            font-family: "Poppins", sans-serif;
+            font-family: 'Open Sans', sans-serif;
             font-size: 12px;
             outline: none;
         }
@@ -113,50 +120,31 @@ export const TablePageFormStyle = styled.div`
 `;
 
 export const FilterStyle = styled.div`
-    padding: 4px 10px;
+    padding: 7px 6px;
     display: flex;
     align-items: center;
+    color: #666;
     font-size: 12px;
     cursor: pointer;
     text-align: center;
     transition: .5s ease;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 
     span::after {
         content: '\\f0b0';
         margin-left: 5px;
-        color: #000;
+        color: #666;
         font-weight: 600;
         font-size: 12px;
         text-indent: 0;
+        transition: .5s ease;
     }
 
-    &:hover { color: #c0c0c0; }
+    &:hover,
+    &:hover span::after { color: #000; }
 `;
-
-// export const FilterFormStyle = styled.form`
-//     width: 30%;
-//     padding: 10px;
-//     margin: 0 10px;
-//     border: 1px solid red;
-//     border-radius: 4px;
-//     display: flex;
-//     flex-direction: column;
-//     posiion: fixed;
-//     top: 100px;
-
-//     input {
-//         padding: 4px;
-//         border-radius: 4px;
-//         border: 1px solid #c0c0c0;
-//     }
-
-//     button {
-//         padding: 8px 12px;
-//         margin: 10px auto 0 0;
-//         border: none;
-//         border-radius: 5px;
-//         background: #2b5fdc;
-//         color: #fff;
-//         outline: none;
-//     }
-// `; 

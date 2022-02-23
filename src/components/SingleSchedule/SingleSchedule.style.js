@@ -13,8 +13,11 @@ export const SingleScheduleStyle = styled.tr`
     }
 
     td:nth-child(1) {
-        width: 5%;
-        background: #dcdcdc;
+        width: 40px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #dcdcdc;
     }
 
     td:nth-child(2) { width: 15%; }
@@ -31,17 +34,17 @@ export const SingleScheduleStyle = styled.tr`
 
     td:nth-child(5) {
         width: 10%;
-        span { background: #ffa07a; }
+        span { background: #eac0c3; }
     }
 
     td:nth-child(6) {
         width: 10%;
-        span { background: #c9be62; }
+        span { background: #f5f77e; }
     }
 
     td:nth-child(7) {
         width: 10%;
-        span { background: #bc8f8f; }
+        span { background: #d7aaf7; }
     }
 
     td:nth-child(8) {
@@ -51,7 +54,7 @@ export const SingleScheduleStyle = styled.tr`
 
     td:nth-child(9) {
         width: 10%;
-        span { background: #d291bc; }
+        span { background: #f7e6b9; }
     }
 
     td:nth-child(10) {

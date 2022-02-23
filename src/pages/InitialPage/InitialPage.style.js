@@ -90,6 +90,12 @@ export const ThemeBtnStyle = styled.span`
     -o-transition: .5s ease;
     transition: .5s ease;
     cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 
     &:hover {
         -webkit-transform: scale(.90);

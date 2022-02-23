@@ -39,7 +39,10 @@ const delReport = (payload, state) => {
 const searchReport = (payload, state) => {
     const { value, setSearchReports } = payload;
     const reports = [];
-    state.map(obj => (obj.name.toLowerCase().search(value) !== -1 ? reports.push(obj) : null))
+
+    if(!isNaN(value)) state.map(obj => (obj.hours.toLowerCase().search(value) !== -1 ? reports.push(obj) : null))
+    else state.map(obj => (obj.name.toLowerCase().search(value) !== -1 ? reports.push(obj) : null))
+
     setSearchReports(reports);
     return state;
 }
