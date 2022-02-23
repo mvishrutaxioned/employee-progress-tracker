@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
 export const TablePageStyle = styled.div`
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     position: fixed;
     top: 7%;
@@ -13,7 +20,11 @@ export const TablePageStyle = styled.div`
     background: #fff;
 
     div:nth-child(2) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
     }
 
@@ -21,14 +32,20 @@ export const TablePageStyle = styled.div`
         padding: 5px 10px;
         margin: 0 5px;
         border-radius: 4px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         background: #2b60de;
         color: #fff;
         font-size: 12px;
+        -webkit-transition: .5s ease;
+        -o-transition: .5s ease;
         transition: .5s ease;
 
-        &:hover { filter: brightness(80%); }
+        &:hover { -webkit-filter: brightness(80%); filter: brightness(80%); }
         span::after {
             margin-right: 5px;
             color: #fff;
@@ -40,7 +57,12 @@ export const TablePageStyle = styled.div`
     }
 
     @media only screen and (max-width: 540px) {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 `;

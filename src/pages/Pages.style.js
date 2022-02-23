@@ -19,7 +19,12 @@ export const FormStyle = styled.form`
     padding: 30px 40px;
 
     & > div:nth-child(1) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
 
         label {
@@ -38,6 +43,7 @@ export const FormStyle = styled.form`
 
             &:focus {
                 border: 1px solid #6aa5f5;
+                -webkit-box-shadow: 0px 0px 3px 0px #6aa5f5;
                 box-shadow: 0px 0px 3px 0px #6aa5f5;
             }
         }
@@ -65,16 +71,25 @@ export const FormDivStyle = styled.div`
     button {
         padding: 10px 25px;
         margin: 30px 0 0 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         border: none;
         border-radius: 5px;
         background: #5ddd63;
         color: #fff;
         font-size: 16px;
+        -webkit-transition: .5s ease;
+        -o-transition: .5s ease;
         transition: .5s ease;
 
-        &:hover { filter: brightness(80%); }
+        &:hover {
+            -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+        }
     }
 
     @media only screen and (max-width: 768px) {
@@ -96,13 +111,18 @@ export const RadioStyle = styled.div`
 `;
 
 export const SelectStyle = styled.div`
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 
     label {
-        margin-top: 30px;
-        font-weight: 600;
-        font-size: 14px;
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 14px;
     }
 
     input,
@@ -117,6 +137,7 @@ export const SelectStyle = styled.div`
 
         &:focus {
             border: 1px solid #6aa5f5;
+            -webkit-box-shadow: 0px 0px 3px 0px #6aa5f5;
             box-shadow: 0px 0px 3px 0px #6aa5f5;
         }
 
@@ -161,7 +182,10 @@ export const TableStyle = styled.table`
     border-collapse: collapse;
     overflow-x: scroll;
 
-    th, td { border: 1px solid #c0c0c0; }
+    th,
+    td {
+        border: 1px solid #c0c0c0;
+    }
 `;
 
 export const TableHeadStyle = styled.thead`
@@ -174,13 +198,13 @@ export const TableHeadStyle = styled.thead`
         font-size: 11px;
         text-align: left;
         letter-spacing: .5px;
-    }
 
-    th span::after {
-        margin-right: 4px;
-        font-size: 12px;
-        color: #000;
-        text-indent: 0;
+        span::after {
+            margin-right: 4px;
+            font-size: 12px;
+            color: #000;
+            text-indent: 0;
+        }
     }
 
     th:nth-child(2) span::after {  content: '\\f7d7'; }
@@ -203,13 +227,13 @@ export const TableHeadStyle2 = styled.thead`
         font-size: 11px;
         text-align: left;
         letter-spacing: .5px;
-    }
 
-    th span::after {
-        margin-right: 4px;
-        font-size: 12px;
-        color: #000;
-        text-indent: 0;
+        span::after {
+            margin-right: 4px;
+            font-size: 12px;
+            color: #000;
+            text-indent: 0;
+        }
     }
 
     th:nth-child(2) span::after,
@@ -222,4 +246,12 @@ export const TableHeadStyle2 = styled.thead`
     th:nth-child(10) span::after { content: "\\f02b"; }
 
     th:nth-child(3) span::after { content: "\\f073"; }
+`;
+
+export const DayRadioBtnStyle = styled.div`
+    p {
+        margin: 30px 0 5px 0;
+        font-weight: 600;
+        font-size: 14px;
+    }
 `;

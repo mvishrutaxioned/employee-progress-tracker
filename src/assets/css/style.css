@@ -113,10 +113,10 @@ code {
 .icon { font-size: 0; }
 
 .icon::after {
-    color: #fff;
-    font-weight: 600;
-    font-family: "Font Awesome 5 Free";
-    text-indent: 0
+  color: #fff;
+  font-weight: 600;
+  font-family: "Font Awesome 5 Free";
+  text-indent: 0
 }
 
 .error {

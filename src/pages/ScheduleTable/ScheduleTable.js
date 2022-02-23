@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { MyContext } from '../../contexts/Context';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import SingleSchedule from '../../components/SingleSchedule/SingleSchedule';
 import TablePageHeading from '../../components/TablePageHeading/TablePageHeading';
 import { TableListStyle, TableStyle, TableHeadStyle2 } from '../Pages.style';
-import { useSelector } from 'react-redux';
 
 const ScheduleTable = () => {
   const reports = useSelector(state => state.reports);
   const [showDel, setShowDel] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [deleteIds, setDeleteIds] = useState([]);
+  const [editId, setEditId] = useState();
+
+  const value = useContext(MyContext);
+  const { searchReports } = value;
 
   const handleChange = (position, myId) => {
     let present = 0;
@@ -28,13 +33,18 @@ const ScheduleTable = () => {
 
     if(currentId.length === 0) setShowDel(false);
     else setShowDel(true)
+
+    if(currentId.length === 1) {
+      setShowEdit(true)
+      setEditId(currentId[0])
+    } else setShowEdit(false)
   }
 
   return (
         <TableListStyle>
           <div className="wrapper">
             <PageHeading text="Log Weekly Shift" />
-            <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds}} elem={{showDel, showEdit, deleteIds}} />
+            <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
             <TableStyle width="1100px">
               <TableHeadStyle2>
                 <tr>
@@ -52,7 +62,16 @@ const ScheduleTable = () => {
                 </tr>
               </TableHeadStyle2>
               <tbody>
-                {reports.map((report, i) => <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />)}
+                {
+                  searchReports.length ?
+                    searchReports.map((report, i) => {
+                      return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+                    })
+                  :
+                  reports.map((report, i) => {
+                    return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+                  })
+                }
               </tbody>
             </TableStyle>
           </div>
