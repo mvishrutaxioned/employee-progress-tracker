@@ -11,7 +11,6 @@ import {
   SelectStyle,
   FormDivStyle,
   FormSectionStyle,
-  DayRadioBtnStyle,
   RadioStyle
 } from '../Pages.style';
 
@@ -54,6 +53,21 @@ const LogShift = () => {
     }
   }, [editInfo])
 
+  useEffect(() => {
+    if(Object.keys(formErrors).length === 0) {
+      if(editInfo.id) dispatch(addScheduleReport({id: editInfo.id, ...formValues }))
+      else dispatch(addScheduleReport(formValues))
+
+      setEditInfo([])
+      alert('Thank You!');
+      navigate("/scheduleTable");
+      setFormValues(initialValues);
+      setFormErrors({error: "error"})
+      formRef.current.reset();
+    }
+    //eslint-disable-next-line
+  }, [formErrors])
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFormValues({...formValues, [name]: value});
@@ -77,105 +91,90 @@ const LogShift = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setFormErrors(validate(formValues))
-
-    if(Object.keys(formErrors).length === 0) {
-      if(editInfo.id) {
-        dispatch(addScheduleReport({id: editInfo.id, ...formValues }))
-        setEditInfo([])
-      } else dispatch(addScheduleReport(formValues))
-
-      alert('Thank You!');
-      navigate("/scheduleTable");
-      setFormValues(initialValues);
-      setFormErrors({error: "error"})
-      formRef.current.reset();
-    }
   }
 
   return (
     <FormSectionStyle>
-      <div className="wrapper">
-        <PageHeading text="Log Weekly Shift" />
-        <FormDivStyle>
-          <h2>Weekly Shift Report</h2>
-          <FormStyle action="#FIXME" method="POST" onSubmit={handleSubmit} ref={formRef}>
-            <SelectStyle>
-              <label htmlFor="empName">Employee Name</label>
-              <select name="name" id="empName" value={formValues.name} onChange={handleChange}>
-                { employeeNames.map((emp, i) => <option key={i} value={emp}>{emp}</option>) }
-              </select>
-            </SelectStyle>
-            <span className="error">{formErrors.name}</span>
-            <SelectStyle>
-              <label htmlFor="weekDate">What is the first date of the week?</label>
-              <input type="date" name="weekDate" id="weekDate" value={formValues.weekDate} onChange={handleChange} />
-            </SelectStyle>
-            <span className="error">{formErrors.weekDate}</span>
-              <p>Monday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="monday" value={formValues.monday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Monday}</span>
-              <p>Tuesday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="tuesday" value={formValues.tuesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Tuesday}</span>
-              <p>Wednesday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="wednesday" value={formValues.wednesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Wednesday}</span>
-              <p>Thursday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="thursday" value={formValues.thursday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Thursday}</span>
-              <p>Friday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="friday" value={formValues.friday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Friday}</span>
-              <p>Saturday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="saturday" value={formValues.saturday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Saturday}</span>
-              <p>Sunday</p>
-              <RadioStyle>
-                {dayInfo.map((day, i) => 
-                <Radios 
-                key={Math.round(Math.random()*10000000)} 
-                name="sunday" value={formValues.sunday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
-              </RadioStyle>
-              <span className="error">{formErrors.Sunday}</span>
-            <SelectStyle>
-              <label htmlFor="hours">What is your weekly work hours ?</label>
-              <input type="text" name="hours" id="hours" value={formValues.hours} onChange={handleChange} />
-            </SelectStyle>
-            <span className="error">{formErrors.hours}</span>
-            <button type="submit">Submit</button>
-          </FormStyle>
-        </FormDivStyle>
-      </div>
+      <PageHeading text="Log Weekly Shift" />
+      <FormDivStyle>
+        <h2>Weekly Shift Report</h2>
+        <FormStyle action="#FIXME" method="POST" onSubmit={handleSubmit} ref={formRef}>
+          <SelectStyle>
+            <label htmlFor="empName">Employee Name</label>
+            <select name="name" id="empName" value={formValues.name} onChange={handleChange}>
+              { employeeNames.map((emp, i) => <option key={i} value={emp}>{emp}</option>) }
+            </select>
+          </SelectStyle>
+          <span className="error">{formErrors.name}</span>
+          <SelectStyle>
+            <label htmlFor="weekDate">What is the first date of the week?</label>
+            <input type="date" name="weekDate" id="weekDate" value={formValues.weekDate} onChange={handleChange} />
+          </SelectStyle>
+          <span className="error">{formErrors.weekDate}</span>
+            <p>Monday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="monday" value={formValues.monday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Monday}</span>
+            <p>Tuesday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="tuesday" value={formValues.tuesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Tuesday}</span>
+            <p>Wednesday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="wednesday" value={formValues.wednesday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Wednesday}</span>
+            <p>Thursday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="thursday" value={formValues.thursday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Thursday}</span>
+            <p>Friday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="friday" value={formValues.friday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Friday}</span>
+            <p>Saturday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="saturday" value={formValues.saturday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Saturday}</span>
+            <p>Sunday</p>
+            <RadioStyle>
+              {dayInfo.map((day, i) => 
+              <Radios 
+              key={Math.round(Math.random()*10000000)} 
+              name="sunday" value={formValues.sunday} change={handleChange} title={day.title} id={Math.round(Math.random()*10000000)} /> )}
+            </RadioStyle>
+            <span className="error">{formErrors.Sunday}</span>
+          <SelectStyle>
+            <label htmlFor="hours">What is your weekly work hours ?</label>
+            <input type="text" name="hours" id="hours" value={formValues.hours} onChange={handleChange} />
+          </SelectStyle>
+          <span className="error">{formErrors.hours}</span>
+          <button type="submit">Submit</button>
+        </FormStyle>
+      </FormDivStyle>
     </FormSectionStyle>
   )
 }

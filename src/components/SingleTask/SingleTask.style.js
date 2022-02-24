@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const SingleTaskStyle = styled.tr`
     td {
         padding: 5px;
+        background: #fff;
         font-family: 'Open Sans', sans-serif;
         font-size: 11px;
 

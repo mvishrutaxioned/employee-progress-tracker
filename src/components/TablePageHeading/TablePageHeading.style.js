@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TablePageStyle = styled.div`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 5px 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -14,7 +14,7 @@ export const TablePageStyle = styled.div`
     -ms-flex-align: center;
     align-items: center;
     position: fixed;
-    top: 7%;
+    top: 39px;
     right: 0;
     left: 0;
     background: #fff;

@@ -46,30 +46,28 @@ const TaskList = () => {
 
   return (
     <TableListStyle>
-      <div className="wrapper">
-        <PageHeading text="Assign Task" />
-        <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
-        <TableStyle width="850px">
-          <TableHeadStyle>
-            <tr>
-              <th>No.</th>
-              <th><span className="icon">task</span>Task</th>
-              <th><span className="icon">assign</span> Assigned To</th>
-              <th><span className="icon">phase</span> Phase</th>
-              <th><span className="icon">status</span> Status</th>
-              <th><span className="icon">date</span> Due Date</th>
-              <th><span className="icon">notes</span> Notes</th>
-            </tr>
-          </TableHeadStyle>
-          <tbody>
-            {searchTasks.length ?
-              searchTasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
-            :
-              tasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
-            }
-          </tbody>
-        </TableStyle>
-      </div>
+      <PageHeading text="Assign Task" />
+      <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
+      <TableStyle width="850px">
+        <TableHeadStyle>
+          <tr>
+            <th>No.</th>
+            <th><span className="icon">task</span>Task</th>
+            <th><span className="icon">assign</span> Assigned To</th>
+            <th><span className="icon">phase</span> Phase</th>
+            <th><span className="icon">status</span> Status</th>
+            <th><span className="icon">date</span> Due Date</th>
+            <th><span className="icon">notes</span> Notes</th>
+          </tr>
+        </TableHeadStyle>
+        <tbody>
+          {searchTasks.length ?
+            searchTasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
+          :
+            tasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
+          }
+        </tbody>
+      </TableStyle>
     </TableListStyle>
   )
 }

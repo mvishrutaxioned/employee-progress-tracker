@@ -84,9 +84,10 @@ sub { bottom: -.25em; }
 
 /*for all*/
 body {
-    margin: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  background-color: #f3f3fe;
 }
 
 a { 
@@ -106,7 +107,7 @@ code {
 /*for wrapper*/
 .wrapper {
   max-width: 1360px;
-  width: 95%; 
+  width: 100%;
   margin: 0 auto;
 }
 

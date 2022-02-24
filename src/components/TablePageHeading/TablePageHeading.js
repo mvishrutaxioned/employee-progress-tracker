@@ -4,8 +4,7 @@ import { deleteTask, editTask, editReport, deleteReport, searchReport, searchTas
 import { MyContext } from '../../contexts/Context';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation  } from 'react-router-dom';
-import FilterScheduleTable from '../FilterScheduleTable/FilterScheduleTable';
-import FilterTasks from '../FilterTasks/FilterTasks';
+import Filter from '../Filter/Filter';
 
 const TablePageHeading = ({ elem, setElem }) => {
   const { showDel, showEdit, deleteIds, editId } = elem;
@@ -15,7 +14,6 @@ const TablePageHeading = ({ elem, setElem }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const [searchText, setSearchText] = useState("");
   const [showFilter, setShowFilter] = useState(false);
 
   const editData = () => {
@@ -33,19 +31,20 @@ const TablePageHeading = ({ elem, setElem }) => {
     else dispatch(deleteReport({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
   }
 
-  const handleSubmit = (e) => {
+  const handleChange= (e) => {
     e.preventDefault();
-    if(location.pathname === '/taskList') dispatch(searchTask({ value: searchText.toLowerCase(), setSearchTasks }))
-    dispatch(searchReport({ value: searchText.toLowerCase(), setSearchReports }))
+    const { value } = e.target;
+    if(location.pathname === '/taskList') dispatch(searchTask({ value: value.toLowerCase(), setSearchTasks }))
+    dispatch(searchReport({ value: value.toLowerCase(), setSearchReports }))
   }
 
   return (
     <>
       <TablePageStyle>
         <TablePageFormStyle>
-            <form action="#FIXME" method="POST" onSubmit={handleSubmit}>
+            <form action="#FIXME" method="POST" onSubmit={e => e.preventDefault()}>
                 <button className="icon" type="submit">search</button>
-                <input type="text" placeholder="Search" onChange={e => setSearchText(e.target.value)} />
+                <input type="text" placeholder="Search" onChange={handleChange} />
             </form>
             <FilterStyle onClick={() => setShowFilter(!showFilter)}>Filter <span className="icon">filter</span></FilterStyle>
         </TablePageFormStyle>
@@ -54,9 +53,7 @@ const TablePageHeading = ({ elem, setElem }) => {
           { showEdit ? <a href="#FIXME" title="Edit" onClick={() => editData()}><span className="icon">edit</span> Edit</a> : null }
         </div>
       </TablePageStyle>
-      { showFilter && (
-        location.pathname === '/scheduleTable' ? <FilterScheduleTable /> : <FilterTasks />
-      ) }
+      { showFilter && <Filter /> }
     </>
   )
 }

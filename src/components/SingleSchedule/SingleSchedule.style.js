@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const SingleScheduleStyle = styled.tr`
     td {
         padding: 6px 5px;
+        background: #fff;
         font-family: 'Open Sans', sans-serif;
         font-size: 12px;
 

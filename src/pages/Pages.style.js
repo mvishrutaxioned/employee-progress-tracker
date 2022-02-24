@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
 export const FormSectionStyle = styled.section`
-    .wrapper {
-        width: 100%;
-        padding: 1px;
-        box-sizing: border-box;
-        background-color: #f3f3fe;
-    }
+    padding-top: 50px;
 
     p {
         margin-top: 30px;
@@ -56,7 +51,7 @@ export const FormStyle = styled.form`
 `;
 
 export const FormDivStyle = styled.div`
-    width: 50%;
+    width: 45%;
     margin: 50px auto;
     background-color: #fff;
 
@@ -168,8 +163,7 @@ export const SelectStyle = styled.div`
 `;
 
 export const TableListStyle = styled.section`
-    .wrapper { width: 100%; }
-    margin-top: 80px;
+    margin-top: 82px;
 
     @media only screen and (max-width: 540px) {
         margin-top: 120px;
@@ -178,7 +172,7 @@ export const TableListStyle = styled.section`
 
 export const TableStyle = styled.table`
     width: ${({width}) => width};
-    margin: 20px 6px;
+    margin: 20px 0;
     border-collapse: collapse;
     overflow-x: scroll;
 

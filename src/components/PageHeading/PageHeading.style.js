@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const PageHeadStyle = styled.div`
     width: 100%;
     padding: 10px 0;
-    margin: auto;
+    margin: 0 auto;
     border-bottom: 1px solid #c0c0c0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -16,6 +16,8 @@ const PageHeadStyle = styled.div`
     align-items: center;
     position: fixed;
     top: 0;
+    right: 0;
+    left: 0;
     background: #fff;
     font-size: 12px;
     z-index: 20;

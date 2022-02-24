@@ -41,41 +41,39 @@ const ScheduleTable = () => {
   }
 
   return (
-        <TableListStyle>
-          <div className="wrapper">
-            <PageHeading text="Log Weekly Shift" />
-            <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
-            <TableStyle width="1100px">
-              <TableHeadStyle2>
-                <tr>
-                  <th>No.</th>
-                  <th><span className="icon">name</span> Employee Name</th>
-                  <th><span className="icon">week</span> Week</th>
-                  <th><span className="icon">day</span> Monday</th>
-                  <th><span className="icon">day</span> Tuesday</th>
-                  <th><span className="icon">day</span> Wednesday</th>
-                  <th><span className="icon">day</span> Thursday</th>
-                  <th><span className="icon">day</span> Friday</th>
-                  <th><span className="icon">day</span> Sunday</th>
-                  <th><span className="icon">day</span> Saturday</th>
-                  <th>Hours</th>
-                </tr>
-              </TableHeadStyle2>
-              <tbody>
-                {
-                  searchReports.length ?
-                    searchReports.map((report, i) => {
-                      return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
-                    })
-                  :
-                  reports.map((report, i) => {
-                    return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
-                  })
-                }
-              </tbody>
-            </TableStyle>
-          </div>
-        </TableListStyle>
+    <TableListStyle>
+        <PageHeading text="Log Weekly Shift" />
+        <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
+        <TableStyle width="1100px">
+          <TableHeadStyle2>
+            <tr>
+              <th>No.</th>
+              <th><span className="icon">name</span> Employee Name</th>
+              <th><span className="icon">week</span> Week</th>
+              <th><span className="icon">day</span> Monday</th>
+              <th><span className="icon">day</span> Tuesday</th>
+              <th><span className="icon">day</span> Wednesday</th>
+              <th><span className="icon">day</span> Thursday</th>
+              <th><span className="icon">day</span> Friday</th>
+              <th><span className="icon">day</span> Sunday</th>
+              <th><span className="icon">day</span> Saturday</th>
+              <th>Hours</th>
+            </tr>
+          </TableHeadStyle2>
+          <tbody>
+            {
+              searchReports.length ?
+                searchReports.map((report, i) => {
+                  return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+                })
+              :
+              reports.map((report, i) => {
+                return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+              })
+            }
+          </tbody>
+        </TableStyle>
+    </TableListStyle>
   )
 }
 
