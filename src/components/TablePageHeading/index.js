@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { TablePageStyle, TablePageFormStyle, FilterStyle } from './TablePageHeading.style';
 import { deleteTask, editTask, editReport, deleteReport, searchReport, searchTask } from '../../actions/actions';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation  } from 'react-router-dom';
 import Filter from '../Filter';

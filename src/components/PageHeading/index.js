@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PageHeadStyle from './PageHeading.style';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 
 const PageHeading = ({text}) => {
   const value = useContext(MyContext);

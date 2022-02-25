@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { FilterStyle } from './Filter.style';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 import { searchReport, searchTask } from '../../actions/actions';
 
 const Filter = () => {

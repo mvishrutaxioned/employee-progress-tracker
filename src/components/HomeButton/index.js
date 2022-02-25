@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import HomeButtonStyle from './HomeButton.style';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 
 const HomeButton = ({ link, color, icon, text, content }) => {
   const value = useContext(MyContext);

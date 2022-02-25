@@ -6,7 +6,7 @@ import AssignTask from './pages/AssignTask';
 import ScheduleTable from './pages/ScheduleTable';
 import TaskList from './pages/TaskList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ContextProvider } from './contexts/context';
+import { ContextProvider } from './contexts/Context';
 
 const  App = () => {
   return (

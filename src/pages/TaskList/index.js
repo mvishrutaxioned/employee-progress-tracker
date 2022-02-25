@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 import TablePageHeading from '../../components/TablePageHeading';
 import PageHeading from '../../components/PageHeading';
 import SingleTask from '../../components/SingleTask';

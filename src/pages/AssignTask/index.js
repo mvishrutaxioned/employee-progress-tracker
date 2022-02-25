@@ -5,7 +5,7 @@ import { addTaskAssigned } from '../../actions/actions';
 import { employeeNames, phaseInfo, statusInfo, taskErr } from '../../utils/formData';
 import PageHeading from '../../components/PageHeading';
 import Radios from '../../components/Radios';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 import {
   FormSectionStyle,
   FormDivStyle,
@@ -24,7 +24,7 @@ const AssignTask = () => {
   const formRef = useRef(null);
 
   useEffect(() => {
-    {editInfo &&
+    if(editInfo) {
       setFormValues({
         task: editInfo.task,
         phase: editInfo.phase,

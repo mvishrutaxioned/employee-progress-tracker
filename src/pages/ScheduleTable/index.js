@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { MyContext } from '../../contexts/context';
+import { MyContext } from '../../contexts/Context';
 import PageHeading from '../../components/PageHeading';
 import SingleSchedule from '../../components/SingleSchedule';
 import TablePageHeading from '../../components/TablePageHeading';
