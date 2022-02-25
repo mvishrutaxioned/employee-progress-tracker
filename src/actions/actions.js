@@ -28,13 +28,6 @@ export const searchReport = report => {
     }
 }
 
-export const validateFormValues = values => {
-    return {
-        type: ActionTypes.VALIDATE_FORM_VALUES,
-        payload: values
-    }
-}
-
 export const addTaskAssigned = task => {
     return {
         type: ActionTypes.ADD_TASK_ASSIGNED,

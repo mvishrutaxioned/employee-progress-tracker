@@ -176,6 +176,13 @@ export const TableStyle = styled.table`
     border-collapse: collapse;
     overflow-x: scroll;
 
+    p {
+        margin-top: 15px;
+        color: #666;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+    }
+
     th,
     td {
         border: 1px solid #c0c0c0;

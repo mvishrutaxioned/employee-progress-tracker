@@ -10,6 +10,22 @@ export const employeeNames = [
     "Allwyn Samuwel"
 ];
 
+export const taskErr = {
+    task: "Task is required" ,
+    phase: "Phase is required" ,
+    status: "Status is required" ,
+    assignTo: "Please select assigned to" ,
+    dueDate: "Due Date is required"
+}
+
+export const reportErr = {
+    name: "Employee name is required",
+    weekDate: "Week date is required",
+    hours: "Hours is required",
+    validHours: "Please enter valid hours",
+    radio: "Please select schedule for"
+}
+
 export const phaseInfo = [
     {
         title: "Phase 1",
