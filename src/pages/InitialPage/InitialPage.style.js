@@ -15,15 +15,20 @@ export const MainStyle = styled.div`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-
-    background-color: ${({color}) => color};
+    background-color: ${({bg}) => bg};
+    -webkit-transition: .5s ease;
+    -o-transition: .5s ease;
+    transition: .5s ease;
 `;
 
 export const PageHeadStyle = styled.main`
     width: 60%;
     margin: 50px auto;
-    color: #fff;
+    color: ${({headText}) => headText};
     text-align: center;
+    -webkit-transition: .5s ease;
+    -o-transition: .5s ease;
+    transition: .5s ease;
 
     h1 {
         margin: 20px auto 5px auto;
@@ -31,19 +36,20 @@ export const PageHeadStyle = styled.main`
     }
 
     a {
-        color: #fff;
+        color: ${({headText}) => headText};
         text-decoration: none;
         -webkit-transition: .5s ease;
         -o-transition: .5s ease;
         transition: .5s ease;
 
-        &:hover { color: #dcdcdc; }
+        &:hover { color: darken(10%); }
     }
 
     p { font-size: 10px; }
 
     .user-heading::after {
-        content: '\f133';
+        content: '\\f133';
+        color: ${({headText}) => headText};
         font-size: 44px;
     }
 `;
@@ -67,7 +73,10 @@ export const HomeBtnStyle = styled.section`
         -ms-flex-align: start;
         align-items: flex-start;
         gap: 10px;
-        background: #e8f0fb;
+        background: ${({listBg}) => listBg};
+        -webkit-transition: .5s ease;
+        -o-transition: .5s ease;
+        transition: .5s ease;
     }
 
     @media only screen and (max-width: 768px) {

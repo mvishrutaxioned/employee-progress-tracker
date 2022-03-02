@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import HomeButton from '../../components/HomeButton';
+import { colors } from '../../utils/themeColors';
+import { MyContext } from '../../contexts/context';
 import { HomeBtnStyle, PageHeadStyle, MainStyle, ThemeBtnStyle } from './InitialPage.style';
 
 const InitialPage = () => {
-    const colors = ['#1967d2', '#85c1e9', '#2e86c1', '#d6eaf8'];
-    const [counter, setCounter] = useState(0);
+    const value = useContext(MyContext);
+    const { setCounter, counter } = value;
 
     const changeColor = () => {
         if(counter > 2) setCounter(0)
@@ -13,8 +15,8 @@ const InitialPage = () => {
     }
 
     return (
-        <MainStyle color={colors[counter]}>
-            <PageHeadStyle>
+        <MainStyle bg={colors[counter].pageBg}>
+            <PageHeadStyle headText={colors[counter].headText}>
                 <div className="wrapper">
                     <span className="user-heading icon">user heading</span>
                     <h1><Link to="/" title="Company X">Company X</Link></h1>
@@ -22,7 +24,7 @@ const InitialPage = () => {
                 </div>
             </PageHeadStyle>
             <ThemeBtnStyle onClick={changeColor}>Toggle Theme</ThemeBtnStyle>
-            <HomeBtnStyle>
+            <HomeBtnStyle listBg={colors[counter].listBg}>
                 <div className="wrapper">
                     <ul>
                         <HomeButton link={'/logShift'} color={'#1C77F4'} icon={'calender'} content={"\\f073"} text={'Log Weekly Shift'} />
