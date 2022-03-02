@@ -176,8 +176,9 @@ export const TableStyle = styled.table`
     border-collapse: collapse;
     overflow-x: scroll;
 
-    p {
+    .not {
         margin-top: 15px;
+        border: none;
         color: #666;
         font-family: 'Open Sans', sans-serif;
         font-size: 12px;

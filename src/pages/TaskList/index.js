@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { MyContext } from '../../contexts/Context';
+import { MyContext } from '../../contexts/context';
 import TablePageHeading from '../../components/TablePageHeading';
 import PageHeading from '../../components/PageHeading';
 import SingleTask from '../../components/SingleTask';
@@ -64,7 +64,7 @@ const TaskList = () => {
           ? searchTasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
           : (tasks.length
             ? tasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
-            : <p>No Data Found</p>)
+            : <tr><td className="not">No Data Found</td></tr>)
           }
         </tbody>
       </TableStyle>

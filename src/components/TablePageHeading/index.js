@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { TablePageStyle, TablePageFormStyle, FilterStyle } from './TablePageHeading.style';
-import { deleteTask, editTask, editReport, deleteReport, searchReport, searchTask } from '../../actions/actions';
-import { MyContext } from '../../contexts/Context';
+import { MyContext } from '../../contexts/context';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation  } from 'react-router-dom';
 import Filter from '../Filter';
+
+import { delScheduleReport, editScheduleReport, searchScheduleReports } from '../../reducers/reportReducer';
+import { editTaskAssigned, searchTaskAssigned, delTaskAssigned } from '../../reducers/taskReducer';
 
 const TablePageHeading = ({ elem, setElem }) => {
   const dispatch = useDispatch();
@@ -18,26 +20,26 @@ const TablePageHeading = ({ elem, setElem }) => {
 
   const editData = () => {
     if(location.pathname === '/taskList') {
-      dispatch(editTask({setEditInfo, setShowEdit, setEditId, editId}))
+      dispatch(editTaskAssigned({setEditInfo, setShowEdit, setEditId, editId}))
       navigate("/assignTask")
     } else {
-      dispatch(editReport({setEditInfo, setShowEdit, setEditId, editId}))
+      dispatch(editScheduleReport({setEditInfo, setShowEdit, setEditId, editId}))
       navigate("/logShift")
     }
   }
 
   const deleteData = () => {
     location.pathname === '/taskList'
-    ? dispatch(deleteTask({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
-    : dispatch(deleteReport({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
+    ? dispatch(delTaskAssigned({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
+    : dispatch(delScheduleReport({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
   }
 
   const handleChange= (e) => {
     e.preventDefault();
     const { value } = e.target;
     location.pathname === '/taskList'
-    ? dispatch(searchTask({ value: value.toLowerCase(), setSearchTasks }))
-    : dispatch(searchReport({ value: value.toLowerCase(), setSearchReports }))
+    ? dispatch(searchTaskAssigned({ value: value.toLowerCase(), setSearchTasks }))
+    : dispatch(searchScheduleReports({ value: value.toLowerCase(), setSearchReports }))
   }
 
   return (

@@ -1,12 +1,12 @@
 import React from 'react';
 import './assets/css/style.css';
-import InitialPage from './pages/InitialPage';
-import LogShift from './pages/LogShift';
-import AssignTask from './pages/AssignTask';
-import ScheduleTable from './pages/ScheduleTable';
-import TaskList from './pages/TaskList';
+import InitialPage from './pages/initialPage';
+import LogShift from './pages/logShift';
+import AssignTask from './pages/assignTask';
+import ScheduleTable from './pages/scheduleTable';
+import TaskList from './pages/taskList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ContextProvider } from './contexts/Context';
+import { ContextProvider } from './contexts/context';
 
 const  App = () => {
   return (

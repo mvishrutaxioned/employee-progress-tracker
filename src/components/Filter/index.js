@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { FilterStyle } from './Filter.style';
-import { MyContext } from '../../contexts/Context';
-import { searchReport, searchTask } from '../../actions/actions';
+import { MyContext } from '../../contexts/context';
+import { searchScheduleReports } from '../../reducers/reportReducer';
+import { searchTaskAssigned } from '../../reducers/taskReducer';
 
 const Filter = () => {
     const dispatch = useDispatch();
@@ -15,8 +16,8 @@ const Filter = () => {
     const handleChange = e => {
         const { value } = e.target;
         (filterCondition
-        ? dispatch(searchReport({ value: value.toLowerCase(), setSearchReports }))
-        : dispatch(searchTask({ value: value.toLowerCase(), setSearchTasks })))
+        ? dispatch(searchScheduleReports({ value: value.toLowerCase(), setSearchReports }))
+        : dispatch(searchTaskAssigned({ value: value.toLowerCase(), setSearchTasks })))
     }
 
     return (

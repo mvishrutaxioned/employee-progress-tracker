@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addScheduleReport } from '../../actions/actions';
-import { MyContext } from '../../contexts/Context';
+import { addScheduleReport } from '../../reducers/reportReducer';
+import { MyContext } from '../../contexts/context';
 import { days, employeeNames, dayInfo, reportErr } from '../../utils/formData';
 import PageHeading from '../../components/PageHeading';
 import Radios from '../../components/Radios';
@@ -25,7 +25,7 @@ const LogShift = () => {
   const formRef = useRef(null);
 
   useEffect(() => {
-    if(editInfo) {
+    {editInfo &&
       setFormValues({
         name: editInfo.name,
         weekDate: editInfo.weekDate,

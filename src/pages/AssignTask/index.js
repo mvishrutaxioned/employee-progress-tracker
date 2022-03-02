@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addTaskAssigned } from '../../actions/actions';
+import { addTaskAssigned } from '../../reducers/taskReducer';
 import { employeeNames, phaseInfo, statusInfo, taskErr } from '../../utils/formData';
 import PageHeading from '../../components/PageHeading';
 import Radios from '../../components/Radios';
-import { MyContext } from '../../contexts/Context';
+import { MyContext } from '../../contexts/context';
 import {
   FormSectionStyle,
   FormDivStyle,

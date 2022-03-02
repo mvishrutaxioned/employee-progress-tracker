@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { MyContext } from '../../contexts/Context';
+import { MyContext } from '../../contexts/context';
 import PageHeading from '../../components/PageHeading';
 import SingleSchedule from '../../components/SingleSchedule';
 import TablePageHeading from '../../components/TablePageHeading';
@@ -68,7 +68,7 @@ const ScheduleTable = () => {
               ? reports.map((report, i) => {
                   return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
                 })
-              : <p>No Data Found</p>)
+              : <tr><td className="not">No Data Found</td></tr>)
             }
           </tbody>
         </TableStyle>
