@@ -258,3 +258,9 @@ export const DayRadioBtnStyle = styled.div`
         font-size: 14px;
     }
 `;
+
+export const ErrorStyle = styled.span`
+    position: absolute;
+    color: #ff0000;
+    font-size: 12px;
+`;

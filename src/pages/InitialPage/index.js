@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import HomeButton from '../../components/HomeButton';
+import HomeButton from '../../components/homeButton';
 import { colors } from '../../utils/themeColors';
 import { MyContext } from '../../contexts/context';
-import { HomeBtnStyle, PageHeadStyle, MainStyle, ThemeBtnStyle } from './InitialPage.style';
+import { HomeBtnStyle, PageHeadStyle, MainStyle, ThemeBtnStyle } from './initialPage.style';
 
 const InitialPage = () => {
     const value = useContext(MyContext);
@@ -27,10 +27,10 @@ const InitialPage = () => {
             <HomeBtnStyle listBg={colors[counter].listBg}>
                 <div className="wrapper">
                     <ul>
-                        <HomeButton link={'/logShift'} color={'#1C77F4'} icon={'calender'} content={"\\f073"} text={'Log Weekly Shift'} />
-                        <HomeButton link={'/scheduleTable'} color={'#1C77F4'} icon={'sheet'} content={"\\f0ce"} text={'Employee Schedule Table'} />
-                        <HomeButton link={'/assignTask'} color={'#34a853'} icon={'task'} content={"\\f46c"} text={'Assign Task'} />
-                        <HomeButton link={'taskList'} color={'#34a853'} icon={'sheet'} content={"\\f0ce"} text={'Employee Task List'} />
+                        <HomeButton link={'/logShift'} color={'#1C77F4'} text={'Log Weekly Shift'} />
+                        <HomeButton link={'/scheduleTable'} color={'#1C77F4'} text={'Employee Schedule Table'} />
+                        <HomeButton link={'/assignTask'} color={'#34a853'} text={'Assign Task'} />
+                        <HomeButton link={'taskList'} color={'#34a853'} text={'Employee Task List'} />
                     </ul>
                 </div>
             </HomeBtnStyle>

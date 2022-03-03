@@ -1,10 +1,10 @@
 import React from 'react';
 import './assets/css/style.css';
 import InitialPage from './pages/initialPage';
-import LogShift from './pages/logShift';
-import AssignTask from './pages/assignTask';
+import ScheduleForm from './pages/scheduleForm';
+import TaskForm from './pages/taskForm';
 import ScheduleTable from './pages/scheduleTable';
-import TaskList from './pages/taskList';
+import TaskTable from './pages/taskTable';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ContextProvider } from './contexts/context';
 
@@ -15,10 +15,10 @@ const  App = () => {
         <div className="App">
           <Routes>
             <Route path="/" element={<InitialPage />} />
-            <Route path="/logShift" element={<LogShift />} />
-            <Route path="/assignTask" element={<AssignTask />} />
+            <Route path="/logShift" element={<ScheduleForm />} />
+            <Route path="/assignTask" element={<TaskForm />} />
             <Route path="/scheduleTable" element={<ScheduleTable />} />
-            <Route path="/taskList" element={<TaskList />} />
+            <Route path="/taskList" element={<TaskTable />} />
           </Routes>
         </div>
       </Router>

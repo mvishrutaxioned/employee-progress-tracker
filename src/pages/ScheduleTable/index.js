@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { MyContext } from '../../contexts/context';
-import PageHeading from '../../components/PageHeading';
-import SingleSchedule from '../../components/SingleSchedule';
-import TablePageHeading from '../../components/TablePageHeading';
-import { TableListStyle, TableStyle, TableHeadStyle2 } from '../Pages.style';
+import PageHeading from '../../components/pageHeading';
+import SingleSchedule from '../../components/singleSchedule';
+import TablePageHeading from '../../components/tablePageHeading';
+import { TableListStyle, TableStyle, TableHeadStyle2 } from '../pages.style';
 
 const ScheduleTable = () => {
   const reports = useSelector(state => state.reports);
@@ -42,7 +42,9 @@ const ScheduleTable = () => {
   return (
     <TableListStyle>
         <PageHeading text="Log Weekly Shift" />
-        <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
+        <TablePageHeading 
+        setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} 
+        elem={{showDel, showEdit, deleteIds, editId}} />
         <TableStyle width="1100px">
           <TableHeadStyle2>
             <tr>
@@ -62,11 +64,11 @@ const ScheduleTable = () => {
           <tbody>
             {searchReports.length
             ? searchReports.map((report, i) => {
-                return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+                return <SingleSchedule key={report.id} index={i} report={report} change={handleChange} />
               })
             : (reports.length
               ? reports.map((report, i) => {
-                  return <SingleSchedule key={report.id} name={`Report-${i}`} index={i} report={report} change={handleChange} />
+                  return <SingleSchedule key={report.id} index={i} report={report} change={handleChange} />
                 })
               : <tr><td className="not">No Data Found</td></tr>)
             }

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import HomeButtonStyle from './HomeButton.style';
+import HomeButtonStyle from './homeButton.style';
 import { MyContext } from '../../contexts/context';
 
-const HomeButton = ({ link, color, icon, text, content }) => {
+const HomeButton = ({ link, color, text }) => {
   const value = useContext(MyContext);
 
   const removeData = () => {
@@ -13,9 +13,9 @@ const HomeButton = ({ link, color, icon, text, content }) => {
   }
   
   return (
-    <HomeButtonStyle color={color} content={content}>
+    <HomeButtonStyle color={color}>
         <Link to={link} onClick={removeData} title={text}>
-            <span className={icon}>icon</span>
+            <span className="icon">icon</span>
             {text}
         </Link>
     </HomeButtonStyle>

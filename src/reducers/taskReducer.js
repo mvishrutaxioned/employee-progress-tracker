@@ -1,7 +1,7 @@
 // import { ActionTypes } from "../constants/contants";
 import { createSlice, current } from '@reduxjs/toolkit';
 
-const addTask = (payload, state) => {
+const addTask = (state, { payload }) => {
     const currentState = current(state);
     if(payload.id) {
         const newData = {...payload};
@@ -13,16 +13,15 @@ const addTask = (payload, state) => {
     return state;
 }
 
-const editTask = (payload, state) => {
+const editTask = (state, { payload }) => {
     const {setEditInfo, setShowEdit, setEditId, editId} = payload;
     const currentState = current(state);
     setShowEdit(false)
     setEditInfo(currentState.find(e => e.id === editId))
     setEditId(null)
-    return state;
 }
 
-const delTask = (payload, state) => {
+const delTask = (state, { payload }) => {
     const {deleteIds, setDeleteIds, setShowDel, setShowEdit } = payload
     for(let i=0; i<state.length; i++) {
         const obj = state[i]
@@ -37,7 +36,7 @@ const delTask = (payload, state) => {
     return state;
 }
 
-const searchTask = (payload, state) => {
+const searchTask = (state, { payload }) => {
     const { value, setSearchTasks } = payload;
     const currentState = current(state);
     let tasks = [];
@@ -46,25 +45,16 @@ const searchTask = (payload, state) => {
     else currentState.map(obj => (obj.task.toLowerCase().search(value.toLowerCase()) !== -1 ? tasks.push(obj) : null))
     
     setSearchTasks(tasks);
-    return state;
 }
 
 export const taskReducer = createSlice({
     name: 'task',
     initialState: [],
     reducers: {
-        addTaskAssigned: (state, {payload}) => {
-            return addTask(payload, state);
-        },
-        delTaskAssigned: (state, {payload}) => {
-            return delTask(payload, state);
-        },
-        editTaskAssigned: (state, {payload}) => {
-            return editTask(payload, state);
-        },
-        searchTaskAssigned: (state, {payload}) => {
-            return searchTask(payload, state);
-        }
+        addTaskAssigned: addTask,
+        delTaskAssigned: delTask,
+        editTaskAssigned: editTask,
+        searchTaskAssigned: searchTask
     }
 })
 
@@ -76,20 +66,3 @@ export const {
 } = taskReducer.actions;
 
 export default taskReducer.reducer;
-
-// const taskReducer = (state = initialState, { type, payload }) => {
-//     switch (type) {
-//         case ActionTypes.ADD_TASK_ASSIGNED:
-//             return addTask(payload, state)
-//         case ActionTypes.DEL_TASK:
-//             return delTask(payload, state)
-//         case ActionTypes.EDIT_TASK:
-//             return editTask(payload, state)
-//         case ActionTypes.SEARCH_TASKS:
-//             return searchTask(payload, state)
-//         default:
-//             return state;
-//     }
-// }
-
-// export default taskReducer;

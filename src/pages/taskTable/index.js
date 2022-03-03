@@ -1,15 +1,12 @@
-import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
+import React, { useState, useContext } from 'react';
 import { MyContext } from '../../contexts/context';
-import TablePageHeading from '../../components/TablePageHeading';
-import PageHeading from '../../components/PageHeading';
-import SingleTask from '../../components/SingleTask';
-import {
-  TableListStyle,
-  TableHeadStyle,
-  TableStyle } from '../Pages.style';
+import SingleTask from '../../components/singleTask';
+import PageHeading from '../../components/pageHeading';
+import TablePageHeading from '../../components/tablePageHeading';
+import { TableListStyle, TableHeadStyle, TableStyle } from '../pages.style';
 
-const TaskList = () => {
+const TaskTable = () => {
   const tasks = useSelector(state => state.tasks);
   const [showDel, setShowDel] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -46,7 +43,9 @@ const TaskList = () => {
   return (
     <TableListStyle>
       <PageHeading text="Assign Task" />
-      <TablePageHeading setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}} elem={{showDel, showEdit, deleteIds, editId}} />
+      <TablePageHeading
+      setElem={{setShowEdit, setShowDel, setDeleteIds, setEditId}}
+      elem={{showDel, showEdit, deleteIds, editId}} />
       <TableStyle width="850px">
         <TableHeadStyle>
           <tr>
@@ -61,15 +60,15 @@ const TaskList = () => {
         </TableHeadStyle>
         <tbody>
           {searchTasks.length
-          ? searchTasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
+          ? searchTasks.map((task, i) => <SingleTask key={task.id} index={i} task={task} change={handleChange} />)
           : (tasks.length
-            ? tasks.map((task, i) => <SingleTask key={task.id} name={`Task-${i}`} index={i} task={task} change={handleChange} />)
+            ? tasks.map((task, i) => <SingleTask key={task.id} index={i} task={task} change={handleChange} />)
             : <tr><td className="not">No Data Found</td></tr>)
           }
-        </tbody>
+          </tbody>
       </TableStyle>
     </TableListStyle>
   )
 }
 
-export default TaskList
+export default TaskTable

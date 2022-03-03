@@ -1,7 +1,6 @@
-// import { ActionTypes } from "../constants/contants";
 import { createSlice, current } from "@reduxjs/toolkit";
 
-const addReport = (payload, state) => {
+const addReport = (state, { payload }) => {
     const currentState = current(state);
     if(payload.id) {
         const newData = {...payload};
@@ -13,16 +12,15 @@ const addReport = (payload, state) => {
     return state;
 }
 
-const editReport = (payload, state) => {
+const editReport = (state, { payload }) => {
     const {setEditInfo, setShowEdit, setEditId, editId} = payload;
     const currentState = current(state);
     setShowEdit(false)
     setEditInfo(currentState.find(e => e.id === editId))
     setEditId(null)
-    return state;
 }
 
-const delReport = (payload, state) => {
+const delReport = (state, { payload }) => {
     const {deleteIds, setDeleteIds, setShowDel, setShowEdit } = payload
     for(let i=0; i<state.length; i++) {
         const obj = state[i]
@@ -37,7 +35,7 @@ const delReport = (payload, state) => {
     return state;
 }
 
-const searchReport = (payload, state) => {
+const searchReport = (state, { payload }) => {
     const { value, setSearchReports } = payload;
     const currentState = current(state);
     const reports = [];
@@ -46,25 +44,16 @@ const searchReport = (payload, state) => {
     else currentState.map(obj => (obj.name.toLowerCase().search(value) !== -1 ? reports.push(obj) : null))
 
     setSearchReports(reports);
-    return state;
 }
 
 export const reportReducer = createSlice({
     name: "report",
     initialState: [],
     reducers: {
-        addScheduleReport: (state, {payload}) => {
-            return addReport(payload, state)
-        },
-        delScheduleReport: (state, {payload}) => {
-            return delReport(payload, state)
-        },
-        editScheduleReport: (state, {payload}) => {
-            return editReport(payload, state)
-        },
-        searchScheduleReports: (state, {payload}) => {
-            return searchReport(payload, state)
-        }
+        addScheduleReport: addReport,
+        delScheduleReport: delReport,
+        editScheduleReport: editReport,
+        searchScheduleReports: searchReport
     }
 })
 
@@ -75,18 +64,3 @@ export const {
     searchScheduleReports } = reportReducer.actions;
 
 export default reportReducer.reducer;
-
-// const reportReducer = (state = initialState, { type, payload }) => {
-//     switch (type) {
-//         case ActionTypes.ADD_SCHEDULE_REPORT:
-//             return addReport(payload, state)
-//         case ActionTypes.DEL_REPORT:
-//             return delReport(payload, state)
-//         case ActionTypes.EDIT_REPORT:
-//             return editReport(payload, state)
-//         case ActionTypes.SEARCH_REPORTS:
-//             return searchReport(payload, state)
-//         default:
-//             return state;
-//     }
-// }

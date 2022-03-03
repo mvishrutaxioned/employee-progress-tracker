@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { TablePageStyle, TablePageFormStyle, FilterStyle } from './TablePageHeading.style';
-import { MyContext } from '../../contexts/context';
 import { useDispatch } from 'react-redux';
+import SearchFilter from '../searchFilter/index';
+import { MyContext } from '../../contexts/context';
 import { useNavigate, useLocation  } from 'react-router-dom';
-import Filter from '../Filter';
-
-import { delScheduleReport, editScheduleReport, searchScheduleReports } from '../../reducers/reportReducer';
+import { TablePageStyle, TablePageFormStyle, FilterStyle } from './tablePageHeading.style';
 import { editTaskAssigned, searchTaskAssigned, delTaskAssigned } from '../../reducers/taskReducer';
+import { delScheduleReport, editScheduleReport, searchScheduleReports } from '../../reducers/reportReducer';
 
 const TablePageHeading = ({ elem, setElem }) => {
   const dispatch = useDispatch();
@@ -34,7 +33,7 @@ const TablePageHeading = ({ elem, setElem }) => {
     : dispatch(delScheduleReport({deleteIds, setDeleteIds, setShowDel, setShowEdit }))
   }
 
-  const handleChange= (e) => {
+  const handleChange= e => {
     e.preventDefault();
     const { value } = e.target;
     location.pathname === '/taskList'
@@ -57,7 +56,7 @@ const TablePageHeading = ({ elem, setElem }) => {
           {showEdit && <a href="#FIXME" title="Edit" onClick={() => editData()}><span className="icon">edit</span> Edit</a>}
         </div>
       </TablePageStyle>
-      {showFilter && <Filter />}
+      {showFilter && <SearchFilter />}
     </>
   )
 }
