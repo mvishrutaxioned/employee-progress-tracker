@@ -1,28 +1,16 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../contexts/context';
 import RadioButton from '../../components/radioButton';
 import PageHeading from '../../components/pageHeading';
 import { addTaskAssigned } from '../../reducers/taskReducer';
-import { employeeNames, phaseInfo, statusInfo, taskErr } from '../../utils/formData';
-import {
-  FormSectionStyle,
-  FormDivStyle,
-  FormStyle,
-  RadioStyle,
-  ErrorStyle,
-  SelectStyle } from '../pages.style';
+import { employeeNames, phaseInfo, statusInfo } from '../../utils/formData';
+import { validateTask, validatePhase, validateAssignTo, validateDueDate, validateStatus } from '../../utils/validations/validateTask';
+import { FormSectionStyle, FormDivStyle, FormStyle, RadioStyle, ErrorStyle, SelectStyle } from '../pages.style';
 
 const TaskForm = () => {
-  const initialValues = {
-    task: "",
-    phase: "",
-    status: "",
-    assignTo: "",
-    dueDate: "",
-    notes: ""
-  };
+  const initialValues = {task:"",phase:"",status:"",assignTo:"",dueDate:"",notes:""}
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({error: "error"});
   const value = useContext(MyContext);
@@ -30,26 +18,6 @@ const TaskForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const formRef = useRef(null);
-
-  useEffect(() => {
-    if(editInfo.id) setFormValues(editInfo)
-  }, [editInfo])
-
-  useEffect(() => {
-    if(Object.keys(formErrors).length === 0) {
-      if(editInfo.id) dispatch(addTaskAssigned({id: editInfo.id, ...formValues }))
-      else dispatch(addTaskAssigned(formValues))
-
-      setEditInfo({});
-      alert('Thank You!');
-      navigate("/taskList");
-      setFormValues({});
-      setFormErrors({error: "error"})
-      formRef.current.reset();
-    }
-    //eslint-disable-next-line
-  }, [formErrors]);
 
   const generateId = () => Math.round(Math.random()*10000000)
 
@@ -58,29 +26,60 @@ const TaskForm = () => {
     setFormValues({...formValues, [name]: value })
   }
 
+  /**
+  * @param {object} errors
+  * @returns {object}
+  * @description submits after checking all errors
+  */
+  const allErrors = (errors) => {
+    const myPromise = new Promise((myResolve, myReject) => {
+      if(Object.keys(errors).length === 0) myResolve('Success');
+      else myReject(errors);
+    });
+    myPromise.then(
+      function(value) {
+        if(editInfo.id) dispatch(addTaskAssigned({id: editInfo.id, ...formValues }))
+        else dispatch(addTaskAssigned(formValues))
+
+        setEditInfo({})
+        alert('Thank You!');
+        navigate("/taskList");
+      },
+      function(errors) { setFormErrors(errors) }
+    );
+  }
+
+  /**
+  * @param {object} values
+  * @returns {object}
+  * @description validates form values
+  */
   const validate = values => {
     const errors = {};
 
-    if(!values.task) errors.task = taskErr.task
-    if(!values.phase) errors.phase = taskErr.phase
-    if(!values.status) errors.status = taskErr.status
-    if(!values.assignTo) errors.assignTo = taskErr.assignTo
-    if(!values.dueDate) errors.dueDate = taskErr.dueDate
-
-    return errors
+    validateTask(values, errors)
+    validatePhase(values, errors)
+    validateStatus(values, errors)
+    validateAssignTo(values, errors)
+    validateDueDate(values, errors)
+    allErrors(errors)
   }
 
   const handleSubmit = e => {
     e.preventDefault();
-    setFormErrors(validate(formValues))
+    validate(formValues)
   }
+
+  useEffect(() => {
+    if(editInfo.id) setFormValues(editInfo)
+  }, [editInfo])
 
   return (
     <FormSectionStyle>
       <PageHeading text="Assign Task" />
       <FormDivStyle>
         <h2>Employee Task Assignment Form</h2>
-        <FormStyle action="#FIXME" method="POST" onSubmit={handleSubmit} ref={formRef}>
+        <FormStyle action="#FIXME" method="POST" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="task">Task</label>
             <input type="text" id="task" name="task" value={formValues.task} onChange={handleChange} />

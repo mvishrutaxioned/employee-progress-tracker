@@ -14,7 +14,7 @@ const HomeButton = ({ link, color, text }) => {
   
   return (
     <HomeButtonStyle color={color}>
-        <Link to={link} onClick={removeData} title={text}>
+        <Link to={link} onClick={() => removeData} title={text}>
             <span className="icon">icon</span>
             {text}
         </Link>

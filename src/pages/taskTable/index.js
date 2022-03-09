@@ -16,6 +16,11 @@ const TaskTable = () => {
   const value = useContext(MyContext);
   const { searchTasks } = value;
 
+  /**
+  * @param {number} position
+  * @param {number} myId
+  * @description sets delete & edit on change
+  */
   const handleChange = (position, myId) => {
     let present = 0;
     let currId = deleteIds.filter((item,index) => {

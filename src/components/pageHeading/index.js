@@ -14,7 +14,7 @@ const PageHeading = ({text}) => {
 
   return (
     <PageHeadStyle>
-        <Link to="/" onClick={removeData} title="Back"><span className="icon">back</span>BACK</Link>
+        <Link to="/" onClick={() => removeData} title="Back"><span className="icon">back</span>BACK</Link>
         <p>{text}</p>
     </PageHeadStyle>
   )

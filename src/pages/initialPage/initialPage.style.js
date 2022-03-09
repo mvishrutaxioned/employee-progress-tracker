@@ -51,6 +51,9 @@ export const PageHeadStyle = styled.main`
         content: '\\f133';
         color: ${({headText}) => headText};
         font-size: 44px;
+        -webkit-transition: .5s ease;
+        -o-transition: .5s ease;
+        transition: .5s ease;
     }
 `;
 

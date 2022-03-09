@@ -1,11 +1,17 @@
 // import { ActionTypes } from "../constants/contants";
 import { createSlice, current } from '@reduxjs/toolkit';
 
+/**
+* 
+* @param {[]} state
+* @param {{}} payload
+* @returns {[]}
+* @description adds task
+*/
 const addTask = (state, { payload }) => {
     const currentState = current(state);
     if(payload.id) {
-        const newData = {...payload};
-        state.splice(state.findIndex(e => e.id === payload.id), 1, newData)
+        state.splice(state.findIndex(e => e.id === payload.id), 1, payload)
     } else {
         const id = Math.round(Math.random()*1000000)
         currentState.push({id, ...payload})
@@ -13,6 +19,13 @@ const addTask = (state, { payload }) => {
     return state;
 }
 
+/**
+* 
+* @param {[]} state
+* @param {{}} payload
+* @returns {[]}
+* @description edits task
+*/
 const editTask = (state, { payload }) => {
     const {setEditInfo, setShowEdit, setEditId, editId} = payload;
     const currentState = current(state);
@@ -21,6 +34,13 @@ const editTask = (state, { payload }) => {
     setEditId(null)
 }
 
+/**
+* 
+* @param {[]} state
+* @param {{}} payload
+* @returns {[]}
+* @description deletes task
+*/
 const delTask = (state, { payload }) => {
     const {deleteIds, setDeleteIds, setShowDel, setShowEdit } = payload
     for(let i=0; i<state.length; i++) {
@@ -36,6 +56,13 @@ const delTask = (state, { payload }) => {
     return state;
 }
 
+/**
+* 
+* @param {[]} state
+* @param {{}} payload
+* @returns {[]}
+* @description search task
+*/
 const searchTask = (state, { payload }) => {
     const { value, setSearchTasks } = payload;
     const currentState = current(state);

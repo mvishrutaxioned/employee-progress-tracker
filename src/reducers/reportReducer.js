@@ -1,10 +1,16 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
+/**
+ * 
+ * @param {[]} state
+ * @param {{}} payload
+ * @returns {[]}
+ * @description adds scheduled report
+ */
 const addReport = (state, { payload }) => {
     const currentState = current(state);
     if(payload.id) {
-        const newData = {...payload};
-        state.splice(state.findIndex(e => e.id === payload.id), 1, newData)
+        state.splice(state.findIndex(e => e.id === payload.id), 1, payload)
     } else {
         const id = Math.round(Math.random()*1000000)
         currentState.push({id, ...payload})
@@ -12,6 +18,13 @@ const addReport = (state, { payload }) => {
     return state;
 }
 
+/**
+ * 
+ * @param {[]} state
+ * @param {{}} payload
+ * @returns {[]}
+ * @description edits scheduled report
+ */
 const editReport = (state, { payload }) => {
     const {setEditInfo, setShowEdit, setEditId, editId} = payload;
     const currentState = current(state);
@@ -20,6 +33,13 @@ const editReport = (state, { payload }) => {
     setEditId(null)
 }
 
+/**
+ * 
+ * @param {[]} state
+ * @param {{}} payload
+ * @returns {[]}
+ * @description deletes one or multiple scheduled report
+ */
 const delReport = (state, { payload }) => {
     const {deleteIds, setDeleteIds, setShowDel, setShowEdit } = payload
     for(let i=0; i<state.length; i++) {
@@ -35,6 +55,13 @@ const delReport = (state, { payload }) => {
     return state;
 }
 
+/**
+ * 
+ * @param {[]} state
+ * @param {{}} payload
+ * @returns {[]}
+ * @description searches schedule report
+ */
 const searchReport = (state, { payload }) => {
     const { value, setSearchReports } = payload;
     const currentState = current(state);
